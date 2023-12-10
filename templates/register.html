@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+</head>
+<body>
+
+<h1>User Registration</h1>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<form method="POST" action="{{ url_for('register') }}">
+    {{ form.csrf_token }}
+    <label for="username">Username:</label>
+    {{ form.username() }}
+    <br>
+    <br>
+    <label for="password">Password:</label>
+    {{ form.password() }}
+    <br>
+    <br>
+    <label for="confirm_password">Confirm Password:</label>
+    {{ form.confirm_password() }}
+    <br>
+    <br>
+    {{ form.submit() }}
+</form>
+
+<br>
+Go back to the <a href="/login">login page.</a>
+
+</body>
+</html>
