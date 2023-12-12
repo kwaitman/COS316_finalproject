@@ -1,7 +1,5 @@
 #.gitignore
 .env
 .DS_Store
-.vscode
-
-*.local
-dist/
+__pycache__
+app.db
