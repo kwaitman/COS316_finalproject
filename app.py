@@ -43,6 +43,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.check_password(form.password.data):
+            session['user_id'] = user.id
             flash('Login successful!', 'success')
             # Implement session handling (e.g., Flask-Login) here
             return redirect(url_for('loggedin'))
@@ -52,7 +53,13 @@ def login():
 
 @app.route('/loggedin')
 def loggedin():
-    return render_template('loggedin.html')
+    user_id = session.get('user_id')
+    if user_id:
+        user = User.query.get(user_id)
+        return render_template('loggedin.html', user=user)
+    else:
+        flash('You are not logged in.', 'danger')
+        return redirect(url_for('login'))
 
 @app.route('/logout')
 def logout():
