@@ -55,7 +55,7 @@ def login():
 def loggedin():
     user_id = session.get('user_id')
     if user_id:
-        user = User.query.get(user_id)
+        user = session.get(user_id)
         return render_template('loggedin.html', user=user)
     else:
         flash('You are not logged in.', 'danger')
