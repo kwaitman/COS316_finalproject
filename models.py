@@ -3,6 +3,9 @@ import vigenere
 import caesar
 import rc4
 import time
+import cProfile
+import pstats
+import psutil
 
 db = SQLAlchemy()
 
@@ -14,6 +17,7 @@ class User(db.Model):
     password_r_encrypted = db.Column(db.String(128), nullable=False)
 
     def set_password(self, password):
+
         start_time = time.time()
         self.password_v_encrypted = vigenere.encrypt(password)
         vigenere_time = time.time() - start_time

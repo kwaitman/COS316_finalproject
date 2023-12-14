@@ -8,7 +8,6 @@
 <body>
 
 <h1>User Login</h1>
-
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         <ul>
@@ -18,7 +17,9 @@
         </ul>
     {% endif %}
 {% endwith %}
-
+(Please note: all inputs are case sensitive)
+<br>
+<br>
 <form method="POST" action="{{ url_for('login') }}">
     {{ form.csrf_token }}
     <label for="username">Username:</label>
