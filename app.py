@@ -28,6 +28,12 @@ class LoginForm(FlaskForm):
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        existing_user = User.query.filter_by(username=form.username.data).first()
+
+        if existing_user:
+            flash('Username is already taken. Please choose a different one.', 'danger')
+            return redirect(url_for('register'))
+    
         user = User(username=form.username.data)
         user.set_password(form.password.data)
         db.session.add(user)
