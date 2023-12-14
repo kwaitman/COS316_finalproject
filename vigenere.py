@@ -1,4 +1,4 @@
-SECRET_KEY="SystemsAreFun"
+SECRET_KEY = "SystemsAreFun"
 
 # Adjust the key string to match the length of password
 def _adjust_key(pw_length):
@@ -26,7 +26,7 @@ def encrypt(password):
 
     shift = list()
     for i in range(len(pw_ascii)):
-        shift.append((pw_ascii[i] + key_ascii[i]) % 127)
+        shift.append((pw_ascii[i] + key_ascii[i]) % 128)
     
     for i in range(len(shift)):
         shift[i] = format(shift[i], '#010b')[2:]
@@ -47,7 +47,7 @@ def decrypt(encrypted):
 
     pw_ascii = list()
     for i in range(len(split)):
-        pw_ascii.append((split[i] - key_ascii[i] + 127) % 127)
+        pw_ascii.append((split[i] - key_ascii[i] + 128) % 128)
 
     decrypted = ''.join(chr(i) for i in pw_ascii)
     return decrypted
