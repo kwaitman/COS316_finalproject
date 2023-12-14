@@ -1,7 +1,6 @@
 SHIFTVALUE = 7
 # Generates an encrypted password given an inputted string
 def encrypt(password):
-
     pw_ascii = list(bytes(password, 'ascii'))
 
     shift = list()

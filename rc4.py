@@ -1,5 +1,3 @@
-import vigenere
-
 SECRET_KEY = "SystemsAreFun"
 
 def _initialize_keystream(pw_length):
