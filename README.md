@@ -1,3 +1,6 @@
+COS 316 Final Project: An Ancient Modern Authentication System
+Created By: Kayla Waitman, Kevin Weng, and Aminah Aliu
+
 Instructions to run the program:
 First, download a local copy of our codebase to your computer by cloning this git repository.
 
